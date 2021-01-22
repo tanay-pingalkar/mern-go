@@ -12,3 +12,8 @@ by running ``merb-go <project name>``
 ! this project is still in production
 ```
 
+## to use
+install it ``npm i -g @tanay-pingalkar/mern-go@1.0.0`` or ``npm i -g @tanay-pingalkar/mern-go@1.0.0``
+
+to use ``merb-go <project name>``
+
