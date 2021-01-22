@@ -1,5 +1,5 @@
 {
-  "name": "mern-go",
+  "name": "@tanay-pingalkar/mern-go",
   "version": "1.0.0",
   "description": "this is a cli to make  setub for mern stack developers in just seconds.",
   "bin": {
