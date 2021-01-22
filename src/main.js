@@ -11,25 +11,6 @@ export async function cliLogic(folderName){
     
     const task=new Listr([
         {
-            title:'getting acess',
-            task:async ()=>{
-                await fs.access('/', fs.constants.X_OK, (err) => {
-                    if (err) {
-                        console.log('Cannot get access', chalk.red.bold('ERROR'));
-                    } else {
-                        console.log('get access', chalk.green.bold('DONE'));
-                    }
-                });
-                await fs.access('/', fs.constants.R_OK  | fs.constants.W_OK, (err) => { 
-                    console.log("\n> Checking Permission for reading" + " and writing to file"); 
-                if (err) 
-                    console.error('No Read and Write access',chalk.red.bold('ERROR')); 
-                else
-                    console.log('File can be read and written',chalk.green.bold('DONE')); 
-                });
-            }
-        },
-        {
             title:'creating folder',
             task:async ()=>{
                 if(folderName!='.'){
@@ -75,9 +56,9 @@ export async function cliLogic(folderName){
             }
         },
         {
-            title:'installing dependancies',
+            title:'installing dependancies for backend',
             task:async ()=>{
-                const oki=await execa('npm', ['i','express','cors'], {
+                const oki=await execa('npm', ['i','express'], {
                     cwd: l,
                 });
                 if (oki.failed) {
@@ -87,10 +68,75 @@ export async function cliLogic(folderName){
                     console.log('package.json created',chalk.green.bold('DONE'))
                 }
             }
-        }
+        },
+        {
+            title:'installing express and cors',
+            task:async ()=>{
+                const oki=await execa('npm', ['i','cors'], {
+                    cwd: l,
+                });
+                if (oki.failed) {
+                    console.log('npm init failed',chalk.red.bold('ERROR'))
+                }
+                else{
+                    console.log('package.json created',chalk.green.bold('DONE'))
+                }
+            }
+        },
+        {
+            title:'installing mongoose',
+            task:async ()=>{
+                const oki=await execa('npm', ['i','mongoose'], {
+                    cwd: l,
+                });
+                if (oki.failed) {
+                    console.log('npm init failed',chalk.red.bold('ERROR'))
+                }
+                else{
+                    console.log('package.json created',chalk.green.bold('DONE'))
+                }
+            }
+        },
+        {
+            title:'installing body-parser and query-string',
+            task:async ()=>{
+                const oki=await execa('npm', ['i','body-parser','query-string'], {
+                    cwd: l,
+                });
+                if (oki.failed) {
+                    console.log('npm init failed',chalk.red.bold('ERROR'))
+                }
+                else{
+                    console.log('package.json created',chalk.green.bold('DONE'))
+                }
+            }
+        },
+        {
+            title:'SETTING UP FRONTEND',
+            task:async ()=>{
+                console.log('',chalk.blue.bold('SETTING UP FRONTEND'))
+            }
+        },
+        {
+            title:'installing body-parser and query-string',
+            task:async ()=>{
+                const oki=await execa('create-react-app', ['client'], {
+                    cwd: l,
+                });
+                if (oki.failed) {
+                    console.log('npm init failed',chalk.red.bold('ERROR'))
+                }
+                else{
+                    console.log('package.json created',chalk.green.bold('DONE'))
+                }
+            }
+        },
+        
+
     ]);
     await task.run();
     console.log('%s Project ready', chalk.green.bold('DONE'));
+    console.log(chalk.blue.bold('now you can go with mern'));
     return true;
      
 }; 
