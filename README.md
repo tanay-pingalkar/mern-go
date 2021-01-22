@@ -8,3 +8,7 @@ then run ``npm link`` <br>
 then check whether the cli is running <br>
 by running ``merb-go <project name>``
 
+```diff
+! this project is still in production
+```
+
