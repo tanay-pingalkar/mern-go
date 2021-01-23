@@ -15,5 +15,5 @@ by running ``merb-go <project name>``
 ## to use
 install it ``npm i -g @tanay-pingalkar/mern-go@1.0.0`` or ``npm i -g @tanay-pingalkar/mern-go@1.0.0``
 
-to use ``merb-go <project name>``
+to use ``mern-go <project name>``
 
